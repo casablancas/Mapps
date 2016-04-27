@@ -82,4 +82,30 @@ class modelo extends CI_Model
 		return $this->db->insert('persona', $persona);
 	}
 
+	public function eliminar($id){
+
+		$res = $this->db->delete('departamento', array('iddpto' => $id));
+		return $res;
+
+	}
+
+
+	public function modificar($id, $latitud, $longitud, $precio, $agua, $luz, $tel, $gas, $internet){
+
+		$departamento = array(
+				'latitud' =>$latitud,
+				'longitud' =>$longitud,
+				'precio' =>$precio,
+				'foto'=>"",
+				'agua'=>$agua,
+				'tel'=>$tel,
+				'luz'=>$luz,
+				'gas'=>$gas,
+				'internet'=>$internet,
+			);
+		$this->db->where('iddpto', $id);
+		$res = $this->db->update('departamento', $departamento);
+		return $res;
+	}
+
 }

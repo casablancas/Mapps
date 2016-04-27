@@ -48,14 +48,14 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-//$db['default']['hostname'] = 'db4free.net';
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-//$db['default']['username'] = 'ssing';
-//$db['default']['password'] = 'shark123';
-$db['default']['password'] = '';
-//$db['default']['database'] = 'ssing';
-$db['default']['database'] = 'mydb';
+$db['default']['hostname'] = 'db4free.net';
+//$db['default']['hostname'] = 'localhost';
+//$db['default']['username'] = 'root';
+$db['default']['username'] = 'ssing';
+$db['default']['password'] = 'shark123';
+//$db['default']['password'] = '';
+$db['default']['database'] = 'ssing';
+//$db['default']['database'] = 'mydb';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

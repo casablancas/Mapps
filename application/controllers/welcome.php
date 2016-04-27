@@ -64,9 +64,10 @@ class Welcome extends CI_Controller {
 
 	public function adminDepto()
 	{
+		$data['deptos'] = $this->modelo->departamentos();
 		$this->load->view('header');
 		$this->load->view('barAdmin');
-		$this->load->view('adminDeptos');
+		$this->load->view('adminDeptos', $data);
 		$this->load->view('footer');
 	}
 
@@ -280,4 +281,86 @@ class Welcome extends CI_Controller {
 		$this->load->view('deptoAuth', $data);
 		$this->load->view('footer');
 	}
+
+	public function eliminar()
+	{
+		$id = $this->uri->segment(3);
+		$res = $this->modelo->eliminar($id);
+		if($res != false)
+		{
+			$this->load->view('exito');
+		}else{
+			$this->load->view('error');
+		}
+	}
+
+	public function modificar()
+	{
+		$id = $this->uri->segment(3);
+		$depto = $this->modelo->depto($id);
+		$data;
+		foreach($depto->result() as $row)
+		{
+			$data['id'] = $row->iddpto;
+			$data['latitud'] = $row->latitud;
+			$data['longitud'] = $row->longitud;
+			$data['precio'] = $row->precio;
+			$data['agua'] = $row->agua;
+			$data['luz'] = $row->luz;
+			$data['tel'] = $row->tel;
+			$data['internet'] = $row->internet;
+			$data['gas'] = $row->gas;
+		}
+
+
+		$this->load->view('header');
+		$this->load->view('barAdmin');
+		$this->load->view('modificarDepto', $data);
+		$this->load->view('footer');
+
+	}
+
+	public function modificarDepto()
+	{
+		$id = $_POST['id'];
+		$latitud = $_POST['latitud'];
+		$longitud = $_POST['longitud'];
+		$precio = $_POST['precio'];
+		$agua=0;
+		$telefono=0;
+		$luz=0;
+		$gas=0;
+		$internet=0;
+		foreach($_POST['servicios'] as $j){
+			switch ($j) {
+				case 'Agua':
+					$agua = 1;
+					break;
+				case 'Telefono':
+					$telefono = 1;
+					break;
+				case 'Luz':
+					$luz = 1;
+					break;
+				case 'Gas':
+					$gas = 1;
+					break;
+				case 'Internet':
+					$internet = 1;
+					break;
+				default:
+					break;
+			}
+
+		$res = $this->modelo->modificar($id, $latitud, $longitud, $precio, $agua, $luz, $telefono, $gas, $internet);
+		if($res != false)
+		{
+			$this->load->view('exito');
+		}else{
+			$this->load->view('error');
+		}
+
+
+	}}
+
 }

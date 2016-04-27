@@ -18,7 +18,7 @@
        otro elemento que se pueda ocultar al minimizar la barra -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="<?php echo base_url() ?>index.php?/Welcome/agregarDepto">Administrar deptos.</a></li>
+      <li class="active"><a href="<?php echo base_url() ?>index.php?/Welcome/adminDepto">Administrar deptos.</a></li>
       
     </ul>
 
