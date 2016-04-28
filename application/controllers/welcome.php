@@ -288,9 +288,13 @@ class Welcome extends CI_Controller {
 		$res = $this->modelo->eliminar($id);
 		if($res != false)
 		{
-			$this->load->view('exito');
+			$this->load->view('header');
+			$this->load->view('exitoCambios');
+			$this->load->view('footer');
 		}else{
-			$this->load->view('error');
+			$this->load->view('header');
+			$this->load->view('errorCambios');
+			$this->load->view('footer');
 		}
 	}
 
@@ -352,15 +356,53 @@ class Welcome extends CI_Controller {
 					break;
 			}
 
-		$res = $this->modelo->modificar($id, $latitud, $longitud, $precio, $agua, $luz, $telefono, $gas, $internet);
-		if($res != false)
-		{
-			$this->load->view('exito');
-		}else{
-			$this->load->view('error');
+				$res = $this->modelo->modificar($id, $latitud, $longitud, $precio, $agua, $luz, $telefono, $gas, $internet);
+				if($res != false)
+				{
+					$this->load->view('header');
+					$this->load->view('exitoCambios');
+					$this->load->view('footer');
+
+				}else{
+					$this->load->view('header');
+					$this->load->view('errorCambios');
+					$this->load->view('footer');
+				}
 		}
+	}
 
+	public function enviarEmail()
+	{
+		//if(isset($_POST['asunto']))
+		/*
+		$destino = "alex_artek@hotmail.com";
+		$desde = "FROM: Mapps";
+		$asunto = "Prueba";
+		$mensaje = "Esto es un mensaje de prueba";
+		mail($destino, $asunto, $mensaje, $desde);
+		*/
+		$config = Array(
+		    'protocol' => 'smtp',
+		    'smtp_host' => 'ssl://smtp.googlemail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'brotherowsky@gmail.com',
+		    'smtp_pass' => 'novidosN0!',
+		    'mailtype'  => 'html', 
+		    'charset'   => 'iso-8859-1'
+		);
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+		// Set to, from, message, etc.
 
-	}}
+		$this->email->from('brotherowsky@gmail.com', 'Luis Muerto');
+		$this->email->to('alex_artek@hotmail.com');
+		$this->email->subject('Email Test');
+		$this->email->message('Este es solamente un mensaje de prueba.');
+		$result = $this->email->send();
 
+		$this->load->view('header');
+		$this->load->view('exito');
+		$this->load->view('footer');
+
+			}
 }

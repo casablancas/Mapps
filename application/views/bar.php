@@ -1,6 +1,6 @@
 <!-- Barra de internauta -->
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
   <!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
   
@@ -79,10 +79,12 @@
 
 <div class="jumbotron">
   <div class="container">
+  <div class="text-primary text-center">
     <h1>Mapps</h1>
+  </div>
     <p>En Mapps puedes buscar viviendas en renta / venta en el estado de Puebla.
     Simplemente selecciona uno de los puntos en la ubicación de tu agrado y obtendrás
-    la información de la vivienda. Para agendar una cita, Inicia sesión o Regístrate.</p>
+    la información de la vivienda. Para agendar una cita, <a href="<?php echo base_url() ?>index.php?/Welcome/login" target="_self">Inicia sesión</a> o <a href="<?php echo base_url() ?>index.php?/Welcome/registroUsuario" target="_self">Regístrate.</p>
     <!--
     <p><a class="btn btn-primary btn-lg" role="button">Leer más</a></p>
     -->

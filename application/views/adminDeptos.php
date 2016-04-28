@@ -19,7 +19,9 @@
               <td><?php echo $row->precio;?></td>
               <td>
                 <a href="<?php echo base_url();?>index.php/Welcome/eliminar/<?php echo $row->iddpto?>"  title="Agregar Analisis">&nbsp;<span class="glyphicon glyphicon-trash"></span></a>
-                <a href="<?php echo base_url();?>index.php/Welcome/modificar/<?php echo $row->iddpto?>" >&nbsp;<span class="glyphicon glyphicon-pencil"></span></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="<?php echo base_url();?>index.php/Welcome/modificar/<?php echo $row->iddpto?>" >&nbsp;<span class="glyphicon glyphicon-wrench"></span></a>
+              
               </td>
             </tr>
              <?php }}?>

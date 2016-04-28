@@ -48,7 +48,7 @@
               <div>
               <br>
               <!-- Botón pensado para los mensajes con alertas informativas -->
-              <button type="button" class="btn btn-info">Cita</button>
+              <a  class="btn btn-info" href="<?php echo base_url() ?>index.php?/Welcome/enviarEmail">Cita</a>
               </div>
 
   						
