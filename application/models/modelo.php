@@ -108,4 +108,9 @@ class modelo extends CI_Model
 		return $res;
 	}
 
+	public function datosPropietario($id)
+	{
+		$query = "SELECT * FROM departamento INNER JOIN persona ON departamento.persona_idpersona = persona.idpersona where persona_idpersona = 'id'";
+	}
+
 }
